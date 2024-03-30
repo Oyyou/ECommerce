@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: web
+    build:
+      context: ./ECommerce.Web
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    networks:
+      - e_comm_net
+    depends_on:
+      - api
+
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: ECommerce.API/Dockerfile
+    environment:
+      - ConnectionStrings__PostgreSqlConnection=${POSTGRES_CONNECTION_STRING}
+    ports:
+      - "8080:8080"
+    networks:
+      - e_comm_net
+    depends_on:
+      - database
+
+  database:
+    container_name: database
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "6666:5432"
+    networks:
+      - e_comm_net
+
+networks:
+  e_comm_net:
+    driver: bridge

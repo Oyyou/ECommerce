@@ -1,0 +1,90 @@
+/* products.module.scss */
+.productsContainer {
+  width: 100%;
+  padding: 20px;
+}
+
+.productsContainer h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.actionsContainer { 
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  padding: 5px 0;
+}
+
+.actionButtonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+thead th,
+tbody td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+thead th {
+  background-color: #f0f0f0;
+}
+
+tbody tr {
+  height: 50px;
+}
+
+tbody td {
+  vertical-align: middle;
+}
+
+.checkboxCell {
+  padding: 5px;
+  width: 20px;
+}
+
+.imageCell {
+  padding: 0;
+  position: relative;
+  height: 50px;
+  width: 50px;
+
+  img {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+tbody td:last-child {
+  text-align: center;
+}
+
+tbody td:last-child button {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+tbody td:last-child button+button {
+  margin-left: 5px;
+}

@@ -1,0 +1,30 @@
+.productListItemContainer {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.productListItemContainer img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.textContainer {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  background-color: lightgray;
+}
+
+.productListItemContainer:hover .textContainer {
+  opacity: 1;
+}
+
+.productListItemContainer h3,
+.productListItemContainer p {
+  margin: 0; /* Remove default margin */
+}

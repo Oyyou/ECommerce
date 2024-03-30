@@ -1,0 +1,28 @@
+.headerOuterContainer {
+  background-color: lightgray;
+  width: 100vw;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.headerContainer {
+  max-width: 1280px;
+  width: 100%;
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.adminNavContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+
+  a {
+    font-weight: bold;
+  }
+}
