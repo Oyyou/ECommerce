@@ -1,3 +1,7 @@
+# Prerequisites
+* dotnet cli
+* docker desktop
+
 # Setup
 1. Create a `.env` file at the top most directory (`.\ECommerce`)
 2. Copy the fieds from the `.env.sample` file into the new `.env` file
