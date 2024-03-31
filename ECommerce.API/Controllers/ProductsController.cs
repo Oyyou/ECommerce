@@ -1,5 +1,6 @@
 ﻿using ECommerce.API.Models;
 using ECommerce.API.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.API.Controllers
@@ -38,6 +39,7 @@ namespace ECommerce.API.Controllers
       return Ok(product);
     }
 
+    [Authorize]
     [HttpPost("create")]
     public async Task<IActionResult> CreateProduct([FromForm] CreateProductRequest request)
     {

@@ -5,6 +5,7 @@ using ECommerce.API.Repositories.Interfaces;
 using ECommerce.API.Services;
 using ECommerce.DAL;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
@@ -29,7 +30,6 @@ namespace ECommerce.API
     public void ConfigureServices(IServiceCollection services)
     {
       var connectionString = Configuration.GetConnectionString("PostgreSqlConnection");
-      Console.WriteLine("Connection string: " + connectionString);
 
       var npgBuilder = new NpgsqlConnectionStringBuilder(connectionString);
 
@@ -63,13 +63,22 @@ namespace ECommerce.API
       {
         options.TokenValidationParameters = new TokenValidationParameters
         {
-          ValidateIssuerSigningKey = true,
+          ValidIssuer = appSettings.Issuer,
+          ValidAudience = appSettings.Audience,
           IssuerSigningKey = new SymmetricSecurityKey(key),
-          ValidateIssuer = false,
-          ValidateAudience = false,
-          ValidateLifetime = true,
+          ValidateIssuer = true,
+          ValidateAudience = true,
+          ValidateLifetime = false,
+          ValidateIssuerSigningKey = true,
           ClockSkew = TimeSpan.Zero
         };
+      });
+
+      services.AddAuthorization(options =>
+      {
+        options.DefaultPolicy = new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme)
+            .RequireAuthenticatedUser()
+            .Build();
       });
 
       var connectionStrings = Configuration.GetSection("ConnectionStrings").Get<ConnectionStrings>();
@@ -108,6 +117,8 @@ namespace ECommerce.API
       });
 
       app.UseRouting();
+      app.UseAuthentication();
+      app.UseAuthorization();
       app.UseCors(x => x
           .AllowAnyOrigin()
           .AllowAnyMethod()

@@ -23,7 +23,7 @@ dist-ssr
 *.sw?
 
 db_data
-
+Images/
 .env
 
 ## Ignore Visual Studio temporary files, build results, and

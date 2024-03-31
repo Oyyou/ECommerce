@@ -25,6 +25,8 @@ namespace ECommerce.API.Services
 
       var tokenDescriptor = new SecurityTokenDescriptor
       {
+        Issuer = _appSettings.Issuer,
+        Audience = _appSettings.Audience,
         Subject = new ClaimsIdentity(new[]
         {
           new Claim(ClaimTypes.Name, user.Id.ToString()),

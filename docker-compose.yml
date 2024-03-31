@@ -20,6 +20,9 @@ services:
       dockerfile: ECommerce.API/Dockerfile
     environment:
       - ConnectionStrings__PostgreSqlConnection=${POSTGRES_CONNECTION_STRING}
+      - AppSettings__Issuer=${ISSUER}
+      - AppSettings__Audience=${AUDIENCE}
+      - AppSettings__Secret=${APP_SECRET}
     ports:
       - "8080:8080"
     networks:
