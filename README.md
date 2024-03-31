@@ -9,3 +9,7 @@
 4. From `.\ECommerce` run `docker compose build`
 5. From `.\ECommerce` run `docker compose up`
 6. From `.\ECommerce.DAL` run `dotnet ef database update -s ../ECommerce.API`
+
+
+## To add migration:
+From `.\ECommerce.DAL` run `dotnet ef migrations add addedDescToProduct -s ../ECommerce.API`
