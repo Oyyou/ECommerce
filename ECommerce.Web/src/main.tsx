@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { HomePage, ProductPage, Root } from 'routes';
+import { BasketPage, HomePage, ProductPage, Root } from 'routes';
 import { AdminPage, DashboardPage, ProductsPage as AdminProductsPage } from 'routes/admin';
 import './index.css'
 
@@ -15,6 +15,9 @@ const router = createBrowserRouter([
     }, {
       path: "/product/:id",
       element: <ProductPage />,
+    }, {
+      path: "/basket",
+      element: <BasketPage />,
     }, {
       path: "/admin",
       element: <AdminPage />,

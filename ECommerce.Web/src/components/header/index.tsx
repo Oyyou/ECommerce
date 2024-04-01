@@ -17,13 +17,20 @@ const Header = () => {
         <nav>
           <a href='/'><h1>Shop</h1></a>
           {token && (
-            <div className={styles.adminNavContainer}>
+            <div className={styles.navContainer}>
               <ul>
                 <li><a href='/admin/dashboard'>Dashboard</a></li>
               </ul>
               <button onClick={handleLogout}>Logout</button>
             </div>
           )}
+          <div className={styles.navContainer}>
+            <ul>
+              <li>
+                <a href='/basket'>Basket</a>
+              </li>
+            </ul>
+          </div>
         </nav>
       </div>
     </div>
