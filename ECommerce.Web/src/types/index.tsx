@@ -10,10 +10,11 @@ export interface IProduct {
   description: string;
 }
 
-export interface IBasket {
-  ownerId: string;
-  items: {
-    id: number;
-    qty: number;
-  }[]
+export interface ICart {
+  items: ICartItem[]
+}
+
+export interface ICartItem {
+  id: number;
+  qty: number;
 }

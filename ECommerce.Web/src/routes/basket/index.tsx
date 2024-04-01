@@ -1,14 +1,19 @@
-import { useRecoilValue } from "recoil";
-import { basketState } from "state/recoilState";
-
+import { CartItem } from "components";
+import { useBasket } from "providers/cartProvider";
+import styles from "./basket.module.scss";
 
 const BasketPage = () => {
-
-  const basket = useRecoilValue(basketState);
+  const { cart } = useBasket();
 
   return (
-    <div>
-
+    <div className={styles.basketContainer}>
+      <h2>Items</h2>
+      <div className={styles.cartItemsContainer}>
+        {cart.items.map((item) => (
+          <CartItem key={item.id} item={item} />
+        ))}
+      </div>
+      <button>Checkout</button>
     </div>
   );
 };

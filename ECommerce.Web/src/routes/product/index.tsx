@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useBasket } from "providers/cartProvider";
 import { getProductById } from "api/services/productService";
 import { getProductPreviewImgUrl } from "utils/urlUtils";
 import { IProduct } from "types";
@@ -11,6 +12,7 @@ const ProductPage = () => {
 
   const [fetched, setFetched] = useState(false);
   const [product, setProduct] = useState<IProduct | null>(null);
+  const { addToCart } = useBasket();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -30,12 +32,15 @@ const ProductPage = () => {
     }
   }, [fetched])
 
-  if (!product) {
+  if (!product || !id) {
     return null;
   }
 
   const onAddToBasket = () => {
-
+    if (product === null) {
+      return;
+    }
+    addToCart(product);
   }
 
   return (
