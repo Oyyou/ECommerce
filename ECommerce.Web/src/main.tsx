@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { BasketPage, HomePage, ProductPage, Root } from 'routes';
 import { AdminPage, DashboardPage, ProductsPage as AdminProductsPage } from 'routes/admin';
-import './index.css'
+import './index.scss'
 
 const router = createBrowserRouter([
   {
