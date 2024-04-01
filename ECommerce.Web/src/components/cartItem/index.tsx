@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react"
 import { getProductById } from "api/services/productService";
 import { ICartItem, IProduct } from "types"
 import styles from "./cartItem.module.scss";
+import { getProductPreviewImgUrl } from "utils/urlUtils";
 
 type cartItemProps = {
   item: ICartItem,
@@ -30,7 +31,8 @@ const CartItem: FC<cartItemProps> = ({ item }) => {
     <div className={styles.cardItemContainer}>
       {product &&
         <>
-          {product.price}
+          <img src={getProductPreviewImgUrl(product)} alt={product.description} />
+          <p>{product.name} - {product.price} x{item.qty}</p>
         </>
       }
     </div>
